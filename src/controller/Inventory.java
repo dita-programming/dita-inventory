@@ -9,7 +9,6 @@ import view.MainView;
 public class Inventory {
     
     static MainView main = new MainView();
-    static Model model = new Model();
     static DefaultTableModel tableModel = (DefaultTableModel) main.getCheckout().getModel();
     
     static AddHandler Add = new AddHandler();
