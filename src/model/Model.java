@@ -35,12 +35,10 @@ public abstract class Model {
                     "PRIMARY KEY(name))";
             statement.addBatch(sql);
             
-            sql = "CREATE TABLE IF NOT EXISTS Members" +
+            sql = "CREATE TABLE IF NOT EXISTS Admins" +
                     "(name VARCHAR(30) NOT NULL," +
-                    "team VARCHAR(30) NOT NULL," +
                     "password VARCHAR(50) NOT NULL," +
-                    "PRIMARY KEY(name)," +
-                    "FOREIGN KEY(team) REFERENCES Teams(name))";
+                    "PRIMARY KEY(name))";
             statement.addBatch(sql);
 
             sql = "CREATE TABLE IF NOT EXISTS Items" +
@@ -57,8 +55,7 @@ public abstract class Model {
                     "time_in TIME DEFAULT NULL," +
                     "name VARCHAR(30) NOT NULL," +
                     "quantity INTEGER NOT NULL," +
-                    "PRIMARY KEY(indx)," +
-                    "FOREIGN KEY(name) REFERENCES Members(name))";
+                    "PRIMARY KEY(indx))";
             statement.addBatch(sql);
 
             statement.executeBatch();

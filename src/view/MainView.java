@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package view;
+
+import javax.swing.JButton;
+
 public class MainView extends javax.swing.JFrame {
 
     public MainView() 
@@ -32,6 +35,8 @@ public class MainView extends javax.swing.JFrame {
         tblStockList = new javax.swing.JTable();
         btnRemove = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        btnAdmin = new javax.swing.JButton();
+        btnLog = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -51,10 +56,13 @@ public class MainView extends javax.swing.JFrame {
         btnAdd.setText("Add");
 
         btnIssue.setText("Issue");
+        btnIssue.setEnabled(false);
 
         btnReturn.setText("Return");
+        btnReturn.setEnabled(false);
 
         btnAddNew.setText("Add New");
+        btnAddNew.setEnabled(false);
 
         tblCheckOut.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -110,6 +118,16 @@ public class MainView extends javax.swing.JFrame {
 
         jLabel3.setText("Quantity");
 
+        btnAdmin.setText("Admin");
+        btnAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdminActionPerformed(evt);
+            }
+        });
+
+        btnLog.setText("Log");
+        btnLog.setEnabled(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -149,8 +167,15 @@ public class MainView extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnRemove))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(12, 12, 12)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnLog)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAdmin)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -181,12 +206,18 @@ public class MainView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAddNew)
                     .addComponent(btnIssue)
-                    .addComponent(btnReturn))
+                    .addComponent(btnReturn)
+                    .addComponent(btnAdmin)
+                    .addComponent(btnLog))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdminActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAdminActionPerformed
     //Buttons getters
     public javax.swing.JButton getAdd() {
         return btnAdd;
@@ -206,6 +237,14 @@ public class MainView extends javax.swing.JFrame {
     
     public javax.swing.JButton getIssue() {
         return btnIssue;
+    }
+
+    public JButton getAdmin() {
+        return btnAdmin;
+    }
+
+    public JButton getLog() {
+        return btnLog;
     }
     
     //Combo Box Getters
@@ -236,7 +275,9 @@ public class MainView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnAddNew;
+    private javax.swing.JButton btnAdmin;
     private javax.swing.JButton btnIssue;
+    private javax.swing.JButton btnLog;
     private javax.swing.JButton btnRemove;
     private javax.swing.JButton btnReturn;
     private javax.swing.JComboBox cboItem;

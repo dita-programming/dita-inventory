@@ -14,6 +14,7 @@ import model.ItemsModel;
  * @author michael
  */
 public class IAddItems {
+    //static Inventory mainController;
     static ItemsModel itemsModel = new ItemsModel();
     static AddItems addNew;
     static AddHandler Add = new AddHandler();
@@ -52,9 +53,9 @@ public class IAddItems {
            
            itemsModel.addItem(name, quantity);
            addNew.dispose();
+           Inventory.updateStockList();
            JOptionPane.showMessageDialog(addNew,"Item successfully added",
                                                      "Success", 2);
-           
        }
     }
     
@@ -90,6 +91,7 @@ public class IAddItems {
            
            itemsModel.setQuantity(name, quantity);
            addNew.dispose();
+           Inventory.updateStockList();
            JOptionPane.showMessageDialog(addNew,"Item successfully updated",
                                                      "Success", 2);
            
