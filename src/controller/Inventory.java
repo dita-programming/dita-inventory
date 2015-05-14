@@ -3,6 +3,7 @@ import java.awt.event.*;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import model.ItemsModel;
+import model.TeamsModel;
 import view.MainView;
 /**
  *
@@ -12,12 +13,14 @@ public class Inventory {
     
     static MainView main = new MainView();
     static ItemsModel model = new ItemsModel();
+    static TeamsModel teamsModel = new TeamsModel();
     static DefaultTableModel tableModel = (DefaultTableModel) main.getCheckout().getModel();
     static DefaultTableModel stockListModel = (DefaultTableModel) main.getStockList().getModel();
     
     static AddHandler Add = new AddHandler();
     static RemoveHandler Remove = new RemoveHandler();
-    static AddNewHandler AddNew = new AddNewHandler();
+    static AddItemHandler AddItem = new AddItemHandler();
+    static AddTeamHandler AddTeam = new AddTeamHandler();
     static ReturnHandler Return = new ReturnHandler();
     static IssueHandler Issue = new IssueHandler();
     static AdminHandler Admin = new AdminHandler();
@@ -55,12 +58,21 @@ public class Inventory {
     }
     
     //Handler for the AddNew Button in MainView
-    static class AddNewHandler implements ActionListener
+    static class AddItemHandler implements ActionListener
     {
        @Override
        public void actionPerformed(ActionEvent event) 
        {
            IAddItems.show();
+       }
+    }
+    
+    static class AddTeamHandler implements ActionListener
+    {
+       @Override
+       public void actionPerformed(ActionEvent event) 
+       {
+           IAddTeams.show();
        }
     }
     
@@ -98,12 +110,15 @@ public class Inventory {
         //Connect event handlers to widgets
         main.getAdd().addActionListener(Add);
         main.getRemove().addActionListener(Remove);
-        main.getAddNew().addActionListener(AddNew);
+        main.getAddItem().addActionListener(AddItem);
+        main.getAddTeam().addActionListener(AddTeam);
         main.getReturn().addActionListener(Return);
         main.getIssue().addActionListener(Issue);
         main.getAdmin().addActionListener(Admin);
         main.setLocationRelativeTo(null);
         updateStockList();
+        updateItemComboBox();
+        updateTeamComboBox();
         main.setVisible(true);
     }
     
@@ -120,8 +135,35 @@ public class Inventory {
         }   
     }
     
+    public static void updateItemComboBox() {
+        ArrayList<ArrayList<String>> stock;
+        stock = model.getItems();
+        
+        if(main.getItem().getItemCount() != 0)
+            main.getItem().removeAllItems();
+        
+        for(ArrayList<String> x:stock) {
+            Object item = x.get(0);
+            main.getItem().addItem(item);
+        }
+    }
+    
+    public static void updateTeamComboBox() {
+        ArrayList<ArrayList<String>> stock;
+        stock = teamsModel.getTeams();
+        
+        if(main.getTeam().getItemCount() != 0)
+            main.getTeam().removeAllItems();
+        
+        for(ArrayList<String> x:stock) {
+            Object team = x.get(0);
+            main.getTeam().addItem(team);
+        }
+    }
+    
     public static void enableButtons() {
-        main.getAddNew().setEnabled(true);
+        main.getAddItem().setEnabled(true);
+        main.getAddTeam().setEnabled(true);
         main.getReturn().setEnabled(true);
         main.getIssue().setEnabled(true);
         main.getLog().setEnabled(true);

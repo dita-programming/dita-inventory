@@ -31,7 +31,6 @@ public abstract class Model {
       
             sql = "CREATE TABLE IF NOT EXISTS Teams" +
                     "(name VARCHAR(30) NOT NULL," +
-                    "total_members INTEGER NOT NULL," +
                     "PRIMARY KEY(name))";
             statement.addBatch(sql);
             

@@ -28,7 +28,7 @@ public class MainView extends javax.swing.JFrame {
         btnAdd = new javax.swing.JButton();
         btnIssue = new javax.swing.JButton();
         btnReturn = new javax.swing.JButton();
-        btnAddNew = new javax.swing.JButton();
+        btnAddItem = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblCheckOut = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -37,6 +37,7 @@ public class MainView extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         btnAdmin = new javax.swing.JButton();
         btnLog = new javax.swing.JButton();
+        btnAddTeam = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -45,11 +46,7 @@ public class MainView extends javax.swing.JFrame {
 
         jLabel1.setText("Name");
 
-        cboTeams.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabel2.setText("Item");
-
-        cboItem.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         spnItemCount.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(1), Integer.valueOf(0), null, Integer.valueOf(1)));
 
@@ -61,8 +58,8 @@ public class MainView extends javax.swing.JFrame {
         btnReturn.setText("Return");
         btnReturn.setEnabled(false);
 
-        btnAddNew.setText("Add New");
-        btnAddNew.setEnabled(false);
+        btnAddItem.setText("Add Item");
+        btnAddItem.setEnabled(false);
 
         tblCheckOut.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -128,6 +125,9 @@ public class MainView extends javax.swing.JFrame {
         btnLog.setText("Log");
         btnLog.setEnabled(false);
 
+        btnAddTeam.setText("Add Team");
+        btnAddTeam.setEnabled(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -136,10 +136,12 @@ public class MainView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnAddNew)
-                        .addGap(83, 83, 83)
-                        .addComponent(btnReturn)
+                        .addComponent(btnAddItem)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAddTeam)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnReturn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnIssue))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -204,11 +206,12 @@ public class MainView extends javax.swing.JFrame {
                     .addComponent(jScrollPane2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAddNew)
+                    .addComponent(btnAddItem)
                     .addComponent(btnIssue)
                     .addComponent(btnReturn)
                     .addComponent(btnAdmin)
-                    .addComponent(btnLog))
+                    .addComponent(btnLog)
+                    .addComponent(btnAddTeam))
                 .addContainerGap())
         );
 
@@ -227,8 +230,12 @@ public class MainView extends javax.swing.JFrame {
         return btnRemove;
     }
     
-    public javax.swing.JButton getAddNew() {
-        return btnAddNew;
+    public javax.swing.JButton getAddItem() {
+        return btnAddItem;
+    }
+    
+    public javax.swing.JButton getAddTeam() {
+        return btnAddTeam;
     }
     
     public javax.swing.JButton getReturn() {
@@ -274,7 +281,8 @@ public class MainView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
-    private javax.swing.JButton btnAddNew;
+    private javax.swing.JButton btnAddItem;
+    private javax.swing.JButton btnAddTeam;
     private javax.swing.JButton btnAdmin;
     private javax.swing.JButton btnIssue;
     private javax.swing.JButton btnLog;

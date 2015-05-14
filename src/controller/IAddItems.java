@@ -54,6 +54,7 @@ public class IAddItems {
            itemsModel.addItem(name, quantity);
            addNew.dispose();
            Inventory.updateStockList();
+           Inventory.updateItemComboBox();
            JOptionPane.showMessageDialog(addNew,"Item successfully added",
                                                      "Success", 2);
        }
@@ -92,6 +93,7 @@ public class IAddItems {
            itemsModel.setQuantity(name, quantity);
            addNew.dispose();
            Inventory.updateStockList();
+           Inventory.updateItemComboBox();
            JOptionPane.showMessageDialog(addNew,"Item successfully updated",
                                                      "Success", 2);
            

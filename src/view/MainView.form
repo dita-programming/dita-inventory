@@ -28,10 +28,12 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="btnAddNew" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
-                      <Component id="btnReturn" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnAddItem" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="btnAddTeam" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
+                      <Component id="btnReturn" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnIssue" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -115,11 +117,12 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnAddNew" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnAddItem" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnIssue" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnReturn" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnAdmin" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnLog" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnAddTeam" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -142,12 +145,7 @@
     <Component class="javax.swing.JComboBox" name="cboTeams">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
-          </StringArray>
+          <StringArray count="0"/>
         </Property>
       </Properties>
     </Component>
@@ -159,12 +157,7 @@
     <Component class="javax.swing.JComboBox" name="cboItem">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
-          </StringArray>
+          <StringArray count="0"/>
         </Property>
       </Properties>
     </Component>
@@ -192,9 +185,9 @@
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="btnAddNew">
+    <Component class="javax.swing.JButton" name="btnAddItem">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Add New"/>
+        <Property name="text" type="java.lang.String" value="Add Item"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
@@ -260,6 +253,12 @@
     <Component class="javax.swing.JButton" name="btnLog">
       <Properties>
         <Property name="text" type="java.lang.String" value="Log"/>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnAddTeam">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Add Team"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
