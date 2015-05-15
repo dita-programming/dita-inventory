@@ -11,6 +11,25 @@ import view.MainView;
  */
 public class Inventory {
     
+    static {
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Inventory.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Inventory.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Inventory.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Inventory.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+    }
+    
     static MainView main = new MainView();
     static ItemsModel model = new ItemsModel();
     static TeamsModel teamsModel = new TeamsModel();
@@ -19,10 +38,9 @@ public class Inventory {
     
     static AddHandler Add = new AddHandler();
     static RemoveHandler Remove = new RemoveHandler();
-    static AddItemHandler AddItem = new AddItemHandler();
-    static AddTeamHandler AddTeam = new AddTeamHandler();
     static ReturnHandler Return = new ReturnHandler();
     static IssueHandler Issue = new IssueHandler();
+    static ManageHandler Manage = new ManageHandler();
     static AdminHandler Admin = new AdminHandler();
     
     //Handler for the Add Button in MainView
@@ -57,25 +75,6 @@ public class Inventory {
        }
     }
     
-    //Handler for the AddNew Button in MainView
-    static class AddItemHandler implements ActionListener
-    {
-       @Override
-       public void actionPerformed(ActionEvent event) 
-       {
-           IAddItems.show();
-       }
-    }
-    
-    static class AddTeamHandler implements ActionListener
-    {
-       @Override
-       public void actionPerformed(ActionEvent event) 
-       {
-           IAddTeams.show();
-       }
-    }
-    
     //Handler for the Return Button in MainView
     static class ReturnHandler implements ActionListener
     {
@@ -96,6 +95,19 @@ public class Inventory {
        }
     }
     
+     //Handler for the AddNew Button in MainView
+    static class ManageHandler implements ActionListener
+    {
+       @Override
+       public void actionPerformed(ActionEvent event) 
+       {
+           if(main.getCbxManage().getSelectedItem().toString().equals("Items"))
+               IAddItems.show();
+           else
+               IAddTeams.show();
+       }
+    }
+    
     static class AdminHandler implements ActionListener
     {
        @Override
@@ -105,15 +117,13 @@ public class Inventory {
        }
     }
     
-
     public static void main(String[] args) {
         //Connect event handlers to widgets
         main.getAdd().addActionListener(Add);
         main.getRemove().addActionListener(Remove);
-        main.getAddItem().addActionListener(AddItem);
-        main.getAddTeam().addActionListener(AddTeam);
         main.getReturn().addActionListener(Return);
         main.getIssue().addActionListener(Issue);
+        main.getManage().addActionListener(Manage);
         main.getAdmin().addActionListener(Admin);
         main.setLocationRelativeTo(null);
         updateStockList();
@@ -162,10 +172,10 @@ public class Inventory {
     }
     
     public static void enableButtons() {
-        main.getAddItem().setEnabled(true);
-        main.getAddTeam().setEnabled(true);
         main.getReturn().setEnabled(true);
         main.getIssue().setEnabled(true);
+        main.getManage().setEnabled(true);
+        main.getCbxManage().setEnabled(true);
         main.getLog().setEnabled(true);
         main.getAdmin().setEnabled(false);
     }

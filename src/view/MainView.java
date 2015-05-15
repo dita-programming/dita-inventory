@@ -6,6 +6,8 @@
 package view;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
 
 public class MainView extends javax.swing.JFrame {
 
@@ -28,7 +30,6 @@ public class MainView extends javax.swing.JFrame {
         btnAdd = new javax.swing.JButton();
         btnIssue = new javax.swing.JButton();
         btnReturn = new javax.swing.JButton();
-        btnAddItem = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblCheckOut = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -37,9 +38,11 @@ public class MainView extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         btnAdmin = new javax.swing.JButton();
         btnLog = new javax.swing.JButton();
-        btnAddTeam = new javax.swing.JButton();
+        cbxManage = new javax.swing.JComboBox();
+        btnManage = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Inventory");
         setResizable(false);
 
         lblTeam.setText("Team");
@@ -57,9 +60,6 @@ public class MainView extends javax.swing.JFrame {
 
         btnReturn.setText("Return");
         btnReturn.setEnabled(false);
-
-        btnAddItem.setText("Add Item");
-        btnAddItem.setEnabled(false);
 
         tblCheckOut.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -125,8 +125,11 @@ public class MainView extends javax.swing.JFrame {
         btnLog.setText("Log");
         btnLog.setEnabled(false);
 
-        btnAddTeam.setText("Add Team");
-        btnAddTeam.setEnabled(false);
+        cbxManage.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Items", "Teams" }));
+        cbxManage.setEnabled(false);
+
+        btnManage.setText("Manage");
+        btnManage.setEnabled(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -136,13 +139,10 @@ public class MainView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnAddItem)
+                        .addComponent(btnIssue)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAddTeam)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnReturn)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnIssue))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
@@ -154,27 +154,29 @@ public class MainView extends javax.swing.JFrame {
                                 .addComponent(lblTeam)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cboTeams, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(spnItemCount, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnAdd)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnRemove))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(btnAdd)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnRemove))
+                            .addComponent(txtName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(spnItemCount, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(6, 6, 6)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(12, 12, 12)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(cbxManage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnManage)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnLog)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnAdmin)))
@@ -197,21 +199,21 @@ public class MainView extends javax.swing.JFrame {
                             .addComponent(cboItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(spnItemCount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnAdd)
-                            .addComponent(btnRemove))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnRemove)
+                            .addComponent(btnAdd))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAddItem)
                     .addComponent(btnIssue)
                     .addComponent(btnReturn)
                     .addComponent(btnAdmin)
                     .addComponent(btnLog)
-                    .addComponent(btnAddTeam))
+                    .addComponent(cbxManage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnManage))
                 .addContainerGap())
         );
 
@@ -229,13 +231,13 @@ public class MainView extends javax.swing.JFrame {
     public javax.swing.JButton getRemove() {
         return btnRemove;
     }
-    
-    public javax.swing.JButton getAddItem() {
-        return btnAddItem;
+
+    public JComboBox getCbxManage() {
+        return cbxManage;
     }
-    
-    public javax.swing.JButton getAddTeam() {
-        return btnAddTeam;
+
+    public JButton getManage() {
+        return btnManage;
     }
     
     public javax.swing.JButton getReturn() {
@@ -281,15 +283,15 @@ public class MainView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
-    private javax.swing.JButton btnAddItem;
-    private javax.swing.JButton btnAddTeam;
     private javax.swing.JButton btnAdmin;
     private javax.swing.JButton btnIssue;
     private javax.swing.JButton btnLog;
+    private javax.swing.JButton btnManage;
     private javax.swing.JButton btnRemove;
     private javax.swing.JButton btnReturn;
     private javax.swing.JComboBox cboItem;
     private javax.swing.JComboBox cboTeams;
+    private javax.swing.JComboBox cbxManage;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
