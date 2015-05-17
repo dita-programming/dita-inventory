@@ -4,12 +4,10 @@
  * and open the template in the editor.
  */
 package model;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-/**
- *
- * @author michael
- */
 public class ItemsModel extends Model {
     
     public ItemsModel() {
@@ -111,6 +109,27 @@ public class ItemsModel extends Model {
         return success;
     }
     
+    public Boolean updateItem(String newItem, String oldItem) {
+        /*
+         * Updates an item in the database
+         */
+        Boolean success = true;
+        startConnection();
+        String sql;
+        try {
+            sql = "UPDATE Items SET name=? WHERE name=?";
+            preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setString(1,newItem);
+            preparedStatement.setString(2,oldItem);
+            preparedStatement.executeUpdate();
+        } catch(Exception e) {
+            success = false;
+            System.err.println("[model.updateItem()]" + e.getClass().getName() + ": " + e.getMessage());
+        } 
+        closeConnection();
+        return success;
+    }
+    
     public Boolean checkItemExists(String item) {
         /*
          * Checks if an item exists in the database
@@ -159,6 +178,30 @@ public class ItemsModel extends Model {
         } catch(Exception e) {
             success = false;
             System.err.println("[model.setCurrentQuantity()]" + e.getClass().getName() + ": " + e.getMessage());
+        } 
+        closeConnection();
+        return success;
+    }
+    
+    public Boolean logItemOut(String item, LocalDateTime datetime, String name, int quantity)
+    {
+        /*
+         * Logs an item out into the database after an issue has occurred
+         */
+        Boolean success = true;
+        startConnection();
+        String sql;
+        try {
+            sql = "INSERT INTO Log(item,time_out,name,quantity) VALUES(?,?,?,?)";
+            preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setString(1,item);
+            preparedStatement.setTimestamp(2,Timestamp.valueOf(datetime));
+            preparedStatement.setString(3, name);
+            preparedStatement.setInt(4, quantity);
+            preparedStatement.executeUpdate();
+        } catch(Exception e) {
+            success = false;
+            System.err.println("[model.logItemOut()]" + e.getClass().getName() + ": " + e.getMessage());
         } 
         closeConnection();
         return success;

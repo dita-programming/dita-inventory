@@ -39,9 +39,9 @@ public class AdminController {
                 password1 = model.getAdmin(name).get(1);
                 if(password.equals(password1)) {
                     Inventory.enableButtons();
+                    admin.dispose();
                     JOptionPane.showMessageDialog(admin,"Login successful",
                                                      "Success", 2);
-                    admin.dispose();
                 }
                 else {
                     JOptionPane.showMessageDialog(admin,"Invalid password",

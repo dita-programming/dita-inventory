@@ -107,7 +107,7 @@ public class TeamsModel extends Model {
     
     public Boolean updateTeam(String newTeam, String oldTeam) {
         /*
-         * Adds a team to the database
+         * Updates a team in the database
          */
         Boolean success = true;
         startConnection();

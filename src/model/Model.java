@@ -48,10 +48,10 @@ public abstract class Model {
             statement.addBatch(sql);
 
             sql = "CREATE TABLE IF NOT EXISTS Log" +
-                    "(indx INTEGER NOT NULL," +
+                    "(indx INTEGER NOT NULL AUTO_INCREMENT," +
                     "item VARCHAR(20) NOT NULL," +
-                    "time_out TIME NOT NULL," +
-                    "time_in TIME DEFAULT NULL," +
+                    "time_out DATETIME NOT NULL," +
+                    "time_in DATETIME DEFAULT NULL," +
                     "name VARCHAR(30) NOT NULL," +
                     "quantity INTEGER NOT NULL," +
                     "PRIMARY KEY(indx))";

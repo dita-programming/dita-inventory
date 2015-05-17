@@ -6,7 +6,7 @@
 package view;
 
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
@@ -14,29 +14,29 @@ import javax.swing.JTextField;
  *
  * @author michael
  */
-public class AddTeams extends javax.swing.JFrame {
+public class Teams extends javax.swing.JFrame {
 
     /**
      * Creates new form AddTeams
      */
-    public AddTeams() {
+    public Teams() {
         initComponents();
     }
 
-    public JButton getAdd() {
-        return btnAdd;
+    public JButton getSubmit() {
+        return btnSubmit;
     }
 
     public JButton getCancel() {
         return btnCancel;
     }
 
-    public JCheckBox getCbxUpdate() {
-        return cbxUpdate;
+    public JComboBox getOperation() {
+        return cbxOperation;
     }
 
     public JButton getUpdate() {
-        return btnUpdate;
+        return btnSubmit;
     }
 
     public JLabel getLblUpdate() {
@@ -62,26 +62,19 @@ public class AddTeams extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
-        btnAdd = new javax.swing.JButton();
-        btnUpdate = new javax.swing.JButton();
+        btnSubmit = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
         txtUpdate = new javax.swing.JTextField();
         lblUpdate = new javax.swing.JLabel();
-        cbxUpdate = new javax.swing.JCheckBox();
+        cbxOperation = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Team");
         setResizable(false);
 
         jLabel1.setText("Name");
 
-        btnAdd.setText("Add");
-        btnAdd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddActionPerformed(evt);
-            }
-        });
-
-        btnUpdate.setText("Update");
+        btnSubmit.setText("Submit");
 
         btnCancel.setText("Cancel");
 
@@ -90,7 +83,7 @@ public class AddTeams extends javax.swing.JFrame {
         lblUpdate.setText("New Name");
         lblUpdate.setEnabled(false);
 
-        cbxUpdate.setText("Update?");
+        cbxOperation.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Add", "Update", "Remove" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -98,27 +91,20 @@ public class AddTeams extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1)
+                    .addComponent(lblUpdate))
+                .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1)
-                            .addComponent(lblUpdate))
-                        .addGap(31, 31, 31)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtUpdate)
-                            .addComponent(txtName, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE))
+                        .addComponent(cbxOperation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbxUpdate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(btnAdd)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnUpdate)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnCancel)
-                                .addGap(6, 6, 6)))))
+                        .addComponent(btnSubmit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnCancel))
+                    .addComponent(txtUpdate)
+                    .addComponent(txtName))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -132,29 +118,23 @@ public class AddTeams extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblUpdate))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cbxUpdate)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCancel)
-                    .addComponent(btnUpdate)
-                    .addComponent(btnAdd))
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxOperation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnSubmit)
+                    .addComponent(btnCancel))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAddActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnCancel;
-    private javax.swing.JButton btnUpdate;
-    private javax.swing.JCheckBox cbxUpdate;
+    private javax.swing.JButton btnSubmit;
+    private javax.swing.JComboBox cbxOperation;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblUpdate;
     private javax.swing.JTextField txtName;

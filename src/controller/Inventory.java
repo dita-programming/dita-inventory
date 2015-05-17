@@ -1,6 +1,10 @@
 package controller;
 import java.awt.event.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.ItemsModel;
 import model.TeamsModel;
@@ -10,7 +14,7 @@ import view.MainView;
  * @author michael
  */
 public class Inventory {
-    
+    // Choose the look and feel of the program
     static {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -31,7 +35,7 @@ public class Inventory {
     }
     
     static MainView main = new MainView();
-    static ItemsModel model = new ItemsModel();
+    static ItemsModel itemsModel = new ItemsModel();
     static TeamsModel teamsModel = new TeamsModel();
     static DefaultTableModel tableModel = (DefaultTableModel) main.getCheckout().getModel();
     static DefaultTableModel stockListModel = (DefaultTableModel) main.getStockList().getModel();
@@ -43,19 +47,54 @@ public class Inventory {
     static ManageHandler Manage = new ManageHandler();
     static AdminHandler Admin = new AdminHandler();
     
+    static ArrayList<Object[]> tempList = new ArrayList<>();
+    static Map itemsList = new HashMap();
+    
     //Handler for the Add Button in MainView
     static class AddHandler implements ActionListener
     {
        @Override
        public void actionPerformed(ActionEvent event) 
        {
-           //gets name from the text field
+           int quantity = (int) main.getItemCount().getValue();
+           String item = main.getItem().getSelectedItem().toString();
+           
+           if(main.getTxtName().getText().isEmpty())
+           {
+               JOptionPane.showMessageDialog(main,"Please enter the name!!",
+                                                  "Blank Name", 2);
+               return;
+           }
+           
+           // Checks to make that the quantity of an item added to the temporary
+           // table should not be greater than current quantity in the stocklist
+           // table
+           if(quantity > Integer.parseInt(itemsModel.getItem(item).get(2)))
+           {
+               JOptionPane.showMessageDialog(main,"Quantity cannot be greater "+
+                                                  "than the current quantity!!",
+                                                  "Out of bounds", 2);
+               return;
+           }
+           
+           // Checks to make sure the items added to the temporary table 
+           // are not greater than the current quantity in the stocklist table
+           if(quantity > (int) itemsList.get(item))
+           {
+               JOptionPane.showMessageDialog(main,item+" left = "+
+                                                  itemsList.get(item).toString(),
+                                                  "Out of bounds", 2);
+               return;
+           }
+           
            Object[] items = {main.getTeam().getSelectedItem().toString(),
                              main.getItem().getSelectedItem().toString(),
-                             main.getName1().getText(),
+                             main.getTxtName().getText(),
                              main.getItemCount().getValue().toString()};
            
            tableModel.addRow(items);
+           tempList.add(items);
+           itemsList.replace(item, (int) itemsList.get(item)-quantity);
        }
     }
     
@@ -91,7 +130,20 @@ public class Inventory {
        @Override
        public void actionPerformed(ActionEvent event) 
        {
-            System.out.println("This IssueHandler works");
+            for(Object[] x:tempList)
+            {
+                String item = x[1].toString();
+                String name = x[2].toString();
+                int quantity = Integer.parseInt(x[3].toString());
+                
+                
+                itemsModel.setCurrentQuantity(item, quantity, "subtract");
+                itemsModel.logItemOut(item, LocalDateTime.now(), name, quantity);
+            }
+            tempList.clear();
+            tableModel.setRowCount(0);
+            Inventory.updateStockList();
+           
        }
     }
     
@@ -102,9 +154,9 @@ public class Inventory {
        public void actionPerformed(ActionEvent event) 
        {
            if(main.getCbxManage().getSelectedItem().toString().equals("Items"))
-               IAddItems.show();
+               IItems.show();
            else
-               IAddTeams.show();
+               ITeams.show();
        }
     }
     
@@ -134,20 +186,24 @@ public class Inventory {
     
     public static void updateStockList() {
         ArrayList<ArrayList<String>> stock;
-        stock = model.getItems();
+        stock = itemsModel.getItems();
         
         if(stockListModel.getRowCount() != 0)
+        {
             stockListModel.setRowCount(0);
+            itemsList.clear();
+        }
         
         for(ArrayList<String> x:stock) {
             Object[] items = {x.get(0), x.get(1), x.get(2)};
             stockListModel.addRow(items);
+            itemsList.put(x.get(0), Integer.parseInt(x.get(2)));
         }   
     }
     
     public static void updateItemComboBox() {
         ArrayList<ArrayList<String>> stock;
-        stock = model.getItems();
+        stock = itemsModel.getItems();
         
         if(main.getItem().getItemCount() != 0)
             main.getItem().removeAllItems();
