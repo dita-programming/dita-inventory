@@ -69,7 +69,7 @@ public class Inventory {
            // Checks to make that the quantity of an item added to the temporary
            // table should not be greater than current quantity in the stocklist
            // table
-           if(quantity > Integer.parseInt(itemsModel.getItem(item).get(2)))
+           if(main.getCbxOperation().getSelectedItem().equals("Issue") && quantity > Integer.parseInt(itemsModel.getItem(item).get(2)))
            {
                JOptionPane.showMessageDialog(main,"Quantity cannot be greater "+
                                                   "than the current quantity!!",
@@ -79,7 +79,7 @@ public class Inventory {
            
            // Checks to make sure the items added to the temporary table 
            // are not greater than the current quantity in the stocklist table
-           if(quantity > (int) itemsList.get(item))
+           if(main.getCbxOperation().getSelectedItem().equals("Issue") && quantity > (int) itemsList.get(item))
            {
                JOptionPane.showMessageDialog(main,item+" left = "+
                                                   itemsList.get(item).toString(),
