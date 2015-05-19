@@ -120,6 +120,19 @@ public class Inventory {
        @Override
        public void actionPerformed(ActionEvent event) 
        {
+           for(Object[] x:tempList)
+            {
+                String item = x[1].toString();
+                String name = x[2].toString();
+                int quantity = Integer.parseInt(x[3].toString());
+                
+                
+                itemsModel.setCurrentQuantity(item, quantity, "add");
+                itemsModel.logItemOut(item, LocalDateTime.now(), name, quantity);
+            }
+            tempList.clear();
+            tableModel.setRowCount(0);
+            Inventory.updateStockList();
             System.out.println("This ReturnHandler works");
        }
     }
@@ -146,6 +159,7 @@ public class Inventory {
            
        }
     }
+    
     
      //Handler for the AddNew Button in MainView
     static class ManageHandler implements ActionListener
