@@ -128,7 +128,7 @@ public class Inventory {
                 
                 
                 itemsModel.setCurrentQuantity(item, quantity, "add");
-                itemsModel.logItemOut(item, LocalDateTime.now(), name, quantity);
+                itemsModel.logItemIn(item, LocalDateTime.now(), name, quantity);
             }
             tempList.clear();
             tableModel.setRowCount(0);
