@@ -127,7 +127,7 @@ public class Inventory {
                 int quantity = Integer.parseInt(x[3].toString());
                 
                 
-                itemsModel.setCurrentQuantity(item, quantity, "add");
+                itemsModel.setCurrentQuantity(item, quantity, "update");
                 itemsModel.logItemIn(item, LocalDateTime.now(), name, quantity);
             }
             tempList.clear();

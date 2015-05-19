@@ -206,4 +206,28 @@ public class ItemsModel extends Model {
         closeConnection();
         return success;
     }
+    
+    public Boolean logItemIn(String item, LocalDateTime datetime, String name, int quantity)
+    {
+        /*
+         * Logs an item into the database after an issue has occurred
+         */
+        Boolean success = true;
+        startConnection();
+        String sql;
+        try {
+            sql = "INSERT INTO Log(item,time_in,name,quantity) VALUES(?,?,?,?)";
+            preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setString(1,item);
+            preparedStatement.setTimestamp(2,Timestamp.valueOf(datetime));
+            preparedStatement.setString(3, name);
+            preparedStatement.setInt(4, quantity);
+            preparedStatement.executeUpdate();
+        } catch(Exception e) {
+            success = false;
+            System.err.println("[model.logItemIn()]" + e.getClass().getName() + ": " + e.getMessage());
+        } 
+        closeConnection();
+        return success;
+    }
 }
