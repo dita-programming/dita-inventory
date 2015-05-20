@@ -12,12 +12,14 @@ import javax.swing.JTextField;
  *
  * @author michael
  */
-public class Admin extends javax.swing.JFrame {
+public class Admin extends javax.swing.JFrame
+{
 
     /**
      * Creates new form Admin
      */
-    public Admin() {
+    public Admin()
+    {
         initComponents();
     }
 
@@ -92,23 +94,25 @@ public class Admin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public JButton getCancel() {
+    public JButton getCancel()
+    {
         return btnCancel;
     }
 
-    public JButton getLogin() {
+    public JButton getLogin()
+    {
         return btnLogin;
     }
 
-    public JTextField getPassword() {
+    public JTextField getPassword()
+    {
         return txtPassword;
     }
 
-    public JTextField getUserName() {
+    public JTextField getUserName()
+    {
         return txtUserName;
     }
-
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;

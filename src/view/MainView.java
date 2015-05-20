@@ -9,16 +9,19 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 
-public class MainView extends javax.swing.JFrame {
+public class MainView extends javax.swing.JFrame
+{
 
-    public MainView() 
+    public MainView()
     {
         super("Sports Inventory");
         initComponents();
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         lblTeam = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -28,8 +31,7 @@ public class MainView extends javax.swing.JFrame {
         cboItem = new javax.swing.JComboBox();
         spnItemCount = new javax.swing.JSpinner();
         btnAdd = new javax.swing.JButton();
-        btnIssue = new javax.swing.JButton();
-        btnReturn = new javax.swing.JButton();
+        btnSubmit = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblCheckOut = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -56,57 +58,68 @@ public class MainView extends javax.swing.JFrame {
 
         btnAdd.setText("Add");
 
-        btnIssue.setText("Issue");
-        btnIssue.setEnabled(false);
-
-        btnReturn.setText("Return");
-        btnReturn.setEnabled(false);
+        btnSubmit.setText("Submit");
+        btnSubmit.setEnabled(false);
 
         tblCheckOut.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+            new Object [][]
+            {
 
             },
-            new String [] {
+            new String []
+            {
                 "Team", "Item", "Name", "Quantity", "Operation"
             }
-        ) {
-            Class[] types = new Class [] {
+        )
+        {
+            Class[] types = new Class []
+            {
                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
-            boolean[] canEdit = new boolean [] {
+            boolean[] canEdit = new boolean []
+            {
                 false, false, false, false, false
             };
 
-            public Class getColumnClass(int columnIndex) {
+            public Class getColumnClass(int columnIndex)
+            {
                 return types [columnIndex];
             }
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
+            public boolean isCellEditable(int rowIndex, int columnIndex)
+            {
                 return canEdit [columnIndex];
             }
         });
         jScrollPane1.setViewportView(tblCheckOut);
 
         tblStockList.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+            new Object [][]
+            {
 
             },
-            new String [] {
+            new String []
+            {
                 "Item", "Quantity", "Current Quantity"
             }
-        ) {
-            Class[] types = new Class [] {
+        )
+        {
+            Class[] types = new Class []
+            {
                 java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
-            boolean[] canEdit = new boolean [] {
+            boolean[] canEdit = new boolean []
+            {
                 false, false, false
             };
 
-            public Class getColumnClass(int columnIndex) {
+            public Class getColumnClass(int columnIndex)
+            {
                 return types [columnIndex];
             }
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
+            public boolean isCellEditable(int rowIndex, int columnIndex)
+            {
                 return canEdit [columnIndex];
             }
         });
@@ -117,8 +130,10 @@ public class MainView extends javax.swing.JFrame {
         jLabel3.setText("Quantity");
 
         btnAdmin.setText("Admin");
-        btnAdmin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnAdmin.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnAdminActionPerformed(evt);
             }
         });
@@ -142,9 +157,7 @@ public class MainView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnIssue)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnReturn)
+                        .addComponent(btnSubmit)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -216,8 +229,7 @@ public class MainView extends javax.swing.JFrame {
                     .addComponent(jScrollPane2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnIssue)
-                    .addComponent(btnReturn)
+                    .addComponent(btnSubmit)
                     .addComponent(btnAdmin)
                     .addComponent(btnLog)
                     .addComponent(cbxManage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -232,75 +244,89 @@ public class MainView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAdminActionPerformed
     //Buttons getters
-    public javax.swing.JButton getAdd() {
+
+    public javax.swing.JButton getAdd()
+    {
         return btnAdd;
     }
-    
-    public javax.swing.JButton getRemove() {
+
+    public javax.swing.JButton getRemove()
+    {
         return btnRemove;
     }
 
-    public JComboBox getCbxManage() {
+    public JComboBox getCbxManage()
+    {
         return cbxManage;
     }
-    
-    public JComboBox getCbxOperation() {
+
+    public JComboBox getCbxOperation()
+    {
         return cbxOperation;
     }
 
-    public JButton getManage() {
+    public JButton getManage()
+    {
         return btnManage;
     }
-    
-    public javax.swing.JButton getReturn() {
-        return btnReturn;
-    }
-    
-    public javax.swing.JButton getIssue() {
-        return btnIssue;
+
+    public JButton getSubmit()
+    {
+        return btnSubmit;
     }
 
-    public JButton getAdmin() {
+    public JButton getAdmin()
+    {
         return btnAdmin;
     }
 
-    public JButton getLog() {
+    public JButton getLog()
+    {
         return btnLog;
     }
-    
+
     //Combo Box Getters
-    public javax.swing.JComboBox getItem() {
+    public javax.swing.JComboBox getItem()
+    {
         return cboItem;
     }
-    
-    public javax.swing.JComboBox getTeam() {
+
+    public javax.swing.JComboBox getTeam()
+    {
         return cboTeams;
     }
+
     //Spinner Getters
-    public javax.swing.JSpinner getItemCount() {
+    public javax.swing.JSpinner getItemCount()
+    {
         return spnItemCount;
     }
+
     //List Getters
-    public javax.swing.JTable getCheckout() {
-        
+    public javax.swing.JTable getCheckout()
+    {
+
         return tblCheckOut;
     }
-    public javax.swing.JTable getStockList() {
+
+    public javax.swing.JTable getStockList()
+    {
         return tblStockList;
     }
+
     //TextField Getters
-    public javax.swing.JTextField getTxtName() {
+    public javax.swing.JTextField getTxtName()
+    {
         return txtName;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnAdmin;
-    private javax.swing.JButton btnIssue;
     private javax.swing.JButton btnLog;
     private javax.swing.JButton btnManage;
     private javax.swing.JButton btnRemove;
-    private javax.swing.JButton btnReturn;
+    private javax.swing.JButton btnSubmit;
     private javax.swing.JComboBox cboItem;
     private javax.swing.JComboBox cboTeams;
     private javax.swing.JComboBox cbxManage;

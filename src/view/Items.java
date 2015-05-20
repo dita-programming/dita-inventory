@@ -13,12 +13,14 @@ import javax.swing.JTextField;
  *
  * @author michael
  */
-public class Items extends javax.swing.JFrame {
+public class Items extends javax.swing.JFrame
+{
 
     /**
      * Creates new form AddItems
      */
-    public Items() {
+    public Items()
+    {
         initComponents();
     }
 
@@ -119,31 +121,38 @@ public class Items extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public javax.swing.JButton getSubmit() {
+    public javax.swing.JButton getSubmit()
+    {
         return btnSubmit;
     }
 
-    public JComboBox getOperation() {
+    public JComboBox getOperation()
+    {
         return cbxOperation;
     }
 
-    public JLabel getLblUpdate() {
+    public JLabel getLblUpdate()
+    {
         return lblUpdate;
     }
 
-    public JTextField getTxtUpdate() {
+    public JTextField getTxtUpdate()
+    {
         return txtUpdate;
     }
-    
-    public javax.swing.JButton getCancel() {
+
+    public javax.swing.JButton getCancel()
+    {
         return btnCancel;
     }
-    
-    public javax.swing.JTextField getTxtName() {
+
+    public javax.swing.JTextField getTxtName()
+    {
         return txtName;
     }
-    
-    public javax.swing.JSpinner getQuantity() {
+
+    public javax.swing.JSpinner getQuantity()
+    {
         return spnrQuantity;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables

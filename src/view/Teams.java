@@ -14,40 +14,49 @@ import javax.swing.JTextField;
  *
  * @author michael
  */
-public class Teams extends javax.swing.JFrame {
+public class Teams extends javax.swing.JFrame
+{
 
     /**
      * Creates new form AddTeams
      */
-    public Teams() {
+    public Teams()
+    {
         initComponents();
     }
 
-    public JButton getSubmit() {
+    public JButton getSubmit()
+    {
         return btnSubmit;
     }
 
-    public JButton getCancel() {
+    public JButton getCancel()
+    {
         return btnCancel;
     }
 
-    public JComboBox getOperation() {
+    public JComboBox getOperation()
+    {
         return cbxOperation;
     }
 
-    public JButton getUpdate() {
+    public JButton getUpdate()
+    {
         return btnSubmit;
     }
 
-    public JLabel getLblUpdate() {
+    public JLabel getLblUpdate()
+    {
         return lblUpdate;
     }
 
-    public JTextField getTxtName() {
+    public JTextField getTxtName()
+    {
         return txtName;
     }
-    
-    public JTextField getTxtUpdate() {
+
+    public JTextField getTxtUpdate()
+    {
         return txtUpdate;
     }
 
@@ -129,7 +138,6 @@ public class Teams extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
