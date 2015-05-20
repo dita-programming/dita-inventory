@@ -41,21 +41,15 @@ public abstract class Model
                     + "PRIMARY KEY(name))";
             statement.addBatch(sql);
 
-            sql = "CREATE TABLE IF NOT EXISTS Items"
-                    + "(name VARCHAR(20) NOT NULL,"
-                    + "quantity INTEGER NOT NULL,"
-                    + "current_quantity INTEGER NOT NULL DEFAULT 0,"
-                    + "PRIMARY KEY(name))";
-            statement.addBatch(sql);
-
-            sql = "CREATE TABLE IF NOT EXISTS Log"
-                    + "(indx INTEGER NOT NULL AUTO_INCREMENT,"
-                    + "item VARCHAR(20) NOT NULL,"
-                    + "time_out DATETIME NOT NULL,"
-                    + "time_in DATETIME DEFAULT NULL,"
-                    + "name VARCHAR(30) NOT NULL,"
-                    + "quantity INTEGER NOT NULL,"
-                    + "PRIMARY KEY(indx))";
+            sql = "CREATE TABLE IF NOT EXISTS Log" +
+                    "(indx INTEGER NOT NULL AUTO_INCREMENT," +
+                    "item VARCHAR(20) NOT NULL," +
+                    "time_out DATETIME NOT NULL," +
+                    "time_in DATETIME DEFAULT NULL," +
+                    "name VARCHAR(30) NOT NULL," +
+                    "issue_quantity INTEGER NOT NULL," +
+                    "return_quantity INTEGER NOT NULL," +
+                    "PRIMARY KEY(indx))";
             statement.addBatch(sql);
 
             statement.executeBatch();
