@@ -48,7 +48,7 @@ public abstract class Model
                     "time_in DATETIME DEFAULT NULL," +
                     "name VARCHAR(30) NOT NULL," +
                     "issue_quantity INTEGER NOT NULL," +
-                    "return_quantity INTEGER NOT NULL," +
+                    "return_quantity INTEGER DEFAULT NULL," +
                     "PRIMARY KEY(indx))";
             statement.addBatch(sql);
 

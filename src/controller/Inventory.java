@@ -91,7 +91,7 @@ public class Inventory
                 {
                     JOptionPane.showMessageDialog(main, "Quantity issued cannot be greater "
                             + "than the current quantity!! "
-                            + "(curent quantity = "
+                            + "(current quantity = "
                             + itemCurrentQuantity + ")",
                             "Out of bounds", 2);
                     return;
@@ -212,12 +212,12 @@ public class Inventory
                 if(operation.equals("Issue"))
                 {
                     itemsModel.setCurrentQuantity(item, quantity, "subtract");
-                    //itemsModel.logItemOut(item, LocalDateTime.now(), name, quantity);
+                    itemsModel.logItemOut(item, LocalDateTime.now(), name, quantity);
                 }
                 else
                 {
                     itemsModel.setCurrentQuantity(item, quantity, "add");
-                    //itemsModel.logItemIn(item, LocalDateTime.now(), name, quantity);
+                    itemsModel.logItemIn(item, LocalDateTime.now(), name, quantity);
                 }
 
             }

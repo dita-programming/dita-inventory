@@ -223,7 +223,7 @@ public class ItemsModel extends Model
         String sql;
         try
         {
-            sql = "INSERT INTO Log(item,time_out,name,quantity) VALUES(?,?,?,?)";
+            sql = "INSERT INTO Log(item,time_out,name,issue_quantity) VALUES(?,?,?,?)";
             preparedStatement = conn.prepareStatement(sql);
             preparedStatement.setString(1, item);
             preparedStatement.setTimestamp(2, Timestamp.valueOf(datetime));
@@ -249,13 +249,13 @@ public class ItemsModel extends Model
         String sql;
         try
         {
-            sql = "UPDATE Log SET time_in=?, return_quantity=?"
+            sql = "UPDATE Log SET time_in=?, return_quantity=? "
                     + "WHERE (name = ?) AND (item = ?) AND (time_in IS NULL)";
             preparedStatement = conn.prepareStatement(sql);
-            preparedStatement.setString(1, item);
-            preparedStatement.setTimestamp(2, Timestamp.valueOf(datetime));
+            preparedStatement.setTimestamp(1, Timestamp.valueOf(datetime));
+            preparedStatement.setInt(2, quantity);
             preparedStatement.setString(3, name);
-            preparedStatement.setInt(4, quantity);
+            preparedStatement.setString(4, item);
             preparedStatement.executeUpdate();
         } catch (Exception e)
         {
