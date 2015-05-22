@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.UIManager;
 import model.ItemsModel;
 import model.TeamsModel;
 import view.MainView;
@@ -19,30 +20,12 @@ public class Inventory
     {
         try
         {
-            for(javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
-            {
-                if("Nimbus".equals(info.getName()))
-                {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         }
-        catch(ClassNotFoundException ex)
+        catch(ClassNotFoundException | InstantiationException | 
+                IllegalAccessException | javax.swing.UnsupportedLookAndFeelException e)
         {
-            java.util.logging.Logger.getLogger(Inventory.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        catch(InstantiationException ex)
-        {
-            java.util.logging.Logger.getLogger(Inventory.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        catch(IllegalAccessException ex)
-        {
-            java.util.logging.Logger.getLogger(Inventory.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        catch(javax.swing.UnsupportedLookAndFeelException ex)
-        {
-            java.util.logging.Logger.getLogger(Inventory.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            System.err.println("[Inventory()]" + e.getClass().getName() + ": " + e.getMessage());
         }
     }
 
@@ -150,6 +133,7 @@ public class Inventory
 
             tableModel.addRow(items);
             tempList.add(items);
+            main.getTxtName().setText(null);
         }
     }
 
