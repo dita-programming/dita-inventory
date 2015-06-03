@@ -17,7 +17,7 @@ public class ItemsModel extends Model
         super();
     }
 
-    public Boolean addItem(String item, int quantity)
+    public Boolean addItem(String item, int quantity, int current_quantity)
     {
         /*
          * Adds an item to the database
@@ -27,12 +27,13 @@ public class ItemsModel extends Model
         String sql;
         try
         {
-            sql = "INSERT INTO Items(name,quantity) VALUES(?,?)";
+            sql = "INSERT INTO Items(name,quantity,current_quantity) VALUES(?,?,?)";
             preparedStatement = conn.prepareStatement(sql);
             preparedStatement.setString(1, item);
             preparedStatement.setInt(2, quantity);
+            preparedStatement.setInt(3, current_quantity);
             preparedStatement.executeUpdate();
-            setCurrentQuantity(item, quantity, "add");
+            //setCurrentQuantity(item, quantity, "add");
         } catch (Exception e)
         {
             success = false;

@@ -13,7 +13,7 @@ public abstract class Model
     private static final String DRIVER = "com.mysql.jdbc.Driver";
     private static final String URL = "jdbc:mysql://localhost/sports";
     private static final String USER = "root";
-    private static final String PASSWORD = "root";
+    private static final String PASSWORD = "ROOT";
     protected Connection conn = null;
     protected Statement statement = null;
     protected PreparedStatement preparedStatement = null;
@@ -38,6 +38,13 @@ public abstract class Model
             sql = "CREATE TABLE IF NOT EXISTS Admins"
                     + "(name VARCHAR(30) NOT NULL,"
                     + "password VARCHAR(50) NOT NULL,"
+                    + "PRIMARY KEY(name))";
+            statement.addBatch(sql);
+            
+            sql = "CREATE TABLE IF NOT EXISTS Items"
+                    + "(name VARCHAR(30) NOT NULL,"
+                    + "quantity INTEGER NOT NULL,"
+                    + "current_quantity INTEGER DEFAULT NULL,"
                     + "PRIMARY KEY(name))";
             statement.addBatch(sql);
 

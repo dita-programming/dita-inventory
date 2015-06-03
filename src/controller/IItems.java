@@ -75,7 +75,8 @@ public class IItems
                 return false;
             }
             int quantity = (int) itemsView.getQuantity().getValue();
-            itemsModel.addItem(name, quantity);
+            int current_quantity = (int) itemsView.getQuantity().getValue();
+            itemsModel.addItem(name, quantity, current_quantity);
             return true;
         }
 
