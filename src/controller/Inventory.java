@@ -1,5 +1,6 @@
 package controller;
 
+import static controller.LogController.logModel;
 import java.awt.event.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ import javax.swing.UIManager;
 import model.ItemsModel;
 import model.TeamsModel;
 import view.MainView;
+import view.LogView;
 
 public class Inventory
 {
@@ -32,6 +34,8 @@ public class Inventory
     static MainView main = new MainView();
     static ItemsModel itemsModel = new ItemsModel();
     static TeamsModel teamsModel = new TeamsModel();
+    
+    static LogView log = new LogView();
     static DefaultTableModel tableModel = (DefaultTableModel) main.getCheckout().getModel();
     static DefaultTableModel stockListModel = (DefaultTableModel) main.getStockList().getModel();
 
@@ -40,6 +44,7 @@ public class Inventory
     static SubmitHandler Submit = new SubmitHandler();
     static ManageHandler Manage = new ManageHandler();
     static AdminHandler Admin = new AdminHandler();
+    static LogHandler Log = new LogHandler();
 
     static ArrayList<Object[]> tempList = new ArrayList<>();
     static Map itemsList = new HashMap();
@@ -239,6 +244,17 @@ public class Inventory
             AdminController.show();
         }
     }
+    //Handler for the Log Button in MainView
+    static class LogHandler implements ActionListener
+    {
+
+        @Override
+        public void actionPerformed(ActionEvent event)
+        {
+            LogController.updateLogList();
+            LogController.show();
+        }
+    }
 
     public static void main(String[] args)
     {
@@ -248,6 +264,7 @@ public class Inventory
         main.getSubmit().addActionListener(Submit);
         main.getManage().addActionListener(Manage);
         main.getAdmin().addActionListener(Admin);
+        main.getLog().addActionListener(Log);
         main.setLocationRelativeTo(null);
         updateStockList();
         updateItemComboBox();
@@ -319,5 +336,4 @@ public class Inventory
         main.getLog().setEnabled(true);
         main.getAdmin().setEnabled(false);
     }
-
 }
