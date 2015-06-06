@@ -1,6 +1,5 @@
 package controller;
 
-import static controller.LogController.logModel;
 import java.awt.event.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -251,7 +250,6 @@ public class Inventory
         @Override
         public void actionPerformed(ActionEvent event)
         {
-            LogController.updateLogList();
             LogController.show();
         }
     }

@@ -1,4 +1,3 @@
-
 package model;
 
 import java.util.ArrayList;
@@ -7,12 +6,14 @@ import java.util.ArrayList;
  *
  * @author MD
  */
-public class Logmodel extends Model 
+public class Logmodel extends Model
 {
+
     public Logmodel()
-            {
-                super();
-            }
+    {
+        super();
+    }
+
     public ArrayList<ArrayList<String>> getLog()
     {
         /*
@@ -27,13 +28,13 @@ public class Logmodel extends Model
             statement = conn.createStatement();
             result = statement.executeQuery(sql);
 
-            while (result.next())
+            while(result.next())
             {
                 ArrayList temp = new ArrayList();
                 temp.add(Integer.toString(result.getInt("indx")));
                 temp.add(result.getString("item"));
-                temp.add(Integer.toString(result.getInt("time_out")));
-                temp.add(Integer.toString(result.getInt("time_in")));
+                temp.add(result.getTimestamp("time_out").toLocalDateTime().toString());
+                temp.add(result.getTimestamp("time_in").toLocalDateTime().toString());
                 temp.add(result.getString("name"));
                 temp.add(Integer.toString(result.getInt("issue_quantity")));
                 temp.add(Integer.toString(result.getInt("return_quantity")));
@@ -41,7 +42,8 @@ public class Logmodel extends Model
                 list.add(temp);
             }
 
-        } catch (Exception e)
+        }
+        catch(Exception e)
         {
             System.err.println("[model.getLog()]" + e.getClass().getName() + ": " + e.getMessage());
         }

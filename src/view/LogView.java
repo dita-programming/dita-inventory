@@ -27,21 +27,38 @@ public class LogView extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tblLog = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         tblLog.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+            new Object [][]
+            {
                 {null, null, null, null, null, null, null}
             },
-            new String [] {
+            new String []
+            {
                 "Index", "Item", "Time_Out", "Time_In", "Name", "Issue_Quantity", "Return_Quantity"
             }
-        ));
+        )
+        {
+            boolean[] canEdit = new boolean []
+            {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex)
+            {
+                return canEdit [columnIndex];
+            }
+        });
+        tblLog.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        tblLog.setAutoscrolls(false);
+        tblLog.setCellSelectionEnabled(true);
         jScrollPane1.setViewportView(tblLog);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
