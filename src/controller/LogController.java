@@ -38,27 +38,26 @@ public class LogController
 
     public static void updateLogList()
     {
+     // The log will not work unless an item has been borrowed and returned 
+     //This ensures that a row has been filled in sql otherwise the Log table model cannot fetch all variables.
+        ArrayList<ArrayList<String>> Log;
+        Log = logModel.getLog();
+
+        if(logTableModel.getRowCount() != 0)
         {
-            ArrayList<ArrayList<String>> Log;
-            Log = logModel.getLog();
+            logTableModel.setRowCount(0);
+            itemsList.clear();
+        }
 
-            if(logTableModel.getRowCount() != 0)
+        for(ArrayList<String> x : Log)
+        {
+            Object[] items =
             {
-                logTableModel.setRowCount(0);
-                itemsList.clear();
-            }
-
-            for(ArrayList<String> x : Log)
-            {
-                Object[] items =
-                {
-                    x.get(0), x.get(1), x.get(2), x.get(3), x.get(4), x.get(5), x.get(6)
-                };
-                //System.out.println(x.get(2));
-                logTableModel.addRow(items);
-                itemsList.put(x.get(0), x.get(2));
-            }
+                x.get(0), x.get(1), x.get(2), x.get(3), x.get(4), x.get(5), x.get(6)
+            };
+            //System.out.println(x.get(2));
+            logTableModel.addRow(items);
+            itemsList.put(x.get(0), x.get(2));
         }
     }
-
 }
